@@ -8,7 +8,7 @@ import re
 # import json
 
 def main():
-    id=input("Enter a playlist Id: ") if len(sys.argv) < 2 else sys.argv[1]
+    id=input("Enter a playlist ID or URL: ") if len(sys.argv) < 2 else sys.argv[1]
     pattern = re.compile(r"list=([a-zA-Z0-9_-]+)")
     match=pattern.search(id)
 
