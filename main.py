@@ -8,16 +8,24 @@ import re
 # import json
 
 def main():
-    id=input("Enter a playlist ID or URL: ") if len(sys.argv) < 2 else sys.argv[1]
-    pattern = re.compile(r"list=([a-zA-Z0-9_-]+)")
-    match=pattern.search(id)
-
-    if match:
-        id=match.group(1)
+    if len(sys.argv) >= 2:
+        ids=sys.argv[1:]
     else:
-        print("Invalid URL\nTry Again!")
-        return
+        ids=input("Enter a playlist ID or URL: ")
+    pattern = re.compile(r"list=([a-zA-Z0-9_-]+)")
 
+    for id in ids:
+        match=pattern.search(id)
+
+        if match:
+            id=match.group(1)
+        else:
+            print("Invalid URL\nTry Again!")
+            return
+
+        print(get_playlist_data(id))
+
+def get_playlist_data(id):
     # API KEY
     YT_API_KEY = os.getenv("YT_KEY")
     yt = build("youtube", "v3", developerKey=YT_API_KEY)
@@ -30,7 +38,6 @@ def main():
     nextPageToken = None
     while True:
         pl_request = yt.playlistItems().list(part="contentDetails", playlistId=id, maxResults=50, pageToken=nextPageToken)
-
         pl_response = pl_request.execute()
 
         # Different request/response to get the playlist title
@@ -68,7 +75,7 @@ def main():
     minutes, seconds = divmod(totalSeconds, 60)
     hours, minutes = divmod(minutes, 60)
     
-    print(f"[{pl_title}] ~ {hours}:{minutes}:{seconds}")
+    return f"[{pl_title}] ~ {hours}:{minutes}:{seconds}"
 
 
         # json_data = json.dumps(pl_response, indent=4)
