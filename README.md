@@ -69,7 +69,7 @@ Enter a playlist ID:
 ```
 
 ## Output
-- The total duration of the playlist is printed in the format ```HH:MM:SS```
+- The total duration of the playlist is printed in the format ```[Playlist Name] ~ HH:MM:SS```
 
 ## 🙋 FAQ
 Q: Can I use this with private playlists?
