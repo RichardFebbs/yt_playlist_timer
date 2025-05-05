@@ -18,7 +18,7 @@ def main():
         print("Invalid URL\nTry Again!")
         return
 
-    # MY API KEY
+    # API KEY
     YT_API_KEY = os.getenv("YT_KEY")
     yt = build("youtube", "v3", developerKey=YT_API_KEY)
 
@@ -33,11 +33,15 @@ def main():
 
         pl_response = pl_request.execute()
 
+        # Different request/response to get the playlist title
+        pl2_req = yt.playlists().list(part="snippet", id=id)
+        pl2_res = pl2_req.execute()
+        pl_title = pl2_res["items"][0]["snippet"]["title"]
+
         vid_ids = []
         for item in pl_response["items"]:
             vid_ids.append(item['contentDetails']['videoId'])
 
-        # print(','.join(vid_ids))
         vid_requests = yt.videos().list(part="contentDetails", id=','.join(vid_ids))
         vid_response = vid_requests.execute()
 
@@ -64,7 +68,7 @@ def main():
     minutes, seconds = divmod(totalSeconds, 60)
     hours, minutes = divmod(minutes, 60)
     
-    print(f"{hours}:{minutes}:{seconds}")
+    print(f"[{pl_title}] ~ {hours}:{minutes}:{seconds}")
 
 
         # json_data = json.dumps(pl_response, indent=4)
