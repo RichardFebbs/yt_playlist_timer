@@ -31,7 +31,7 @@ venv\Scripts\activate  # Activate the environment (Windows)
 pip install -r requirements.txt  # Install dependencies
 ```
 3. Generate a Youtube Data API Key
-If you dont know how to generate a YouTube Data API v3 key, you can visit [this site](https://docs.themeum.com/tutor-lms/tutorials/get-youtube-api-key/https://docs.themeum.com/tutor-lms/tutorials/get-youtube-api-key/):
+If you dont know how to generate a YouTube Data API v3 key, you can visit [this site](https://docs.themeum.com/tutor-lms/tutorials/get-youtube-api-key/https://docs.themeum.com/tutor-lms/tutorials/get-youtube-api-key/)
 
 4. Set the API key as an environment variable
 To set the API key as an environment variable, you can export it (recommended)
