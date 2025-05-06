@@ -18,7 +18,7 @@ fi
 packages="$($VENV_PIP freeze)" # Get the current environment package list
 if [ -e requirements.txt ]; then
     # Use diff to compare the current packages with requirements.txt
-    if [ -z $(diff <(echo "$packages") requirements.txt) ]; then
+    if diff <(echo "$packages") requirements.txt >/dev/null; then
         echo "Setup complete"
     else
         $VENV_PIP install -r requirements.txt || { echo "Failed to install requirements"; exit 1; }

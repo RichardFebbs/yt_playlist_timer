@@ -25,7 +25,7 @@ This Python script calculates the **total duration** of a YouTube playlist by su
 2. Recreate the environment from requirements.txt using setup.sh(For Linux) or setup.bat(For Windows)
 
 ```bash
-./setup.sh # or bat setup.bat 
+./setup.sh # or setup.bat on Windows
 source yt_timer_env/bin/activate  # Activate the environment (Linux/macOS)
 venv\Scripts\activate  # Activate the environment (Windows)
 ```
