@@ -11,7 +11,8 @@ def main():
     if len(sys.argv) >= 2:
         ids=sys.argv[1:]
     else:
-        ids=input("Enter a playlist ID or URL: ")
+        ids=[input("Enter a playlist ID or URL: ")]
+
     pattern = re.compile(r"list=([a-zA-Z0-9_-]+)")
 
     for id in ids:
@@ -20,6 +21,7 @@ def main():
         if match:
             id=match.group(1)
         else:
+            print(match)
             print("Invalid URL\nTry Again!")
             return
 
