@@ -22,13 +22,12 @@ This Python script calculates the **total duration** of a YouTube playlist by su
    git clone https://github.com/yourusername/yt-playlist-duration.git
    cd yt-playlist-duration
    ```
-2. Recreate the environment from requirements.txt
+2. Recreate the environment from requirements.txt using setup.sh(For Linux) or setup.bat(For Windows)
 
 ```bash
-python -m venv venv  # Create a new virtual environment
-source venv/bin/activate  # Activate the environment (Linux/macOS)
+./setup.sh # or bat setup.bat 
+source yt_timer_env/bin/activate  # Activate the environment (Linux/macOS)
 venv\Scripts\activate  # Activate the environment (Windows)
-pip install -r requirements.txt  # Install dependencies
 ```
 3. Generate a Youtube Data API Key
 If you dont know how to generate a YouTube Data API v3 key, you can visit [this site](https://docs.themeum.com/tutor-lms/tutorials/get-youtube-api-key/https://docs.themeum.com/tutor-lms/tutorials/get-youtube-api-key/)
