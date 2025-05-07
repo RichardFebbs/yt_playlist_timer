@@ -77,7 +77,7 @@ def get_playlist_data(id):
     minutes, seconds = divmod(totalSeconds, 60)
     hours, minutes = divmod(minutes, 60)
     
-    return f"[{pl_title}] ~ {hours}:{minutes}:{seconds}"
+    return f"[{pl_title}] ~ {hours}:{minutes:02d}:{seconds:02d}"
 
 
         # json_data = json.dumps(pl_response, indent=4)
