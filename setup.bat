@@ -1,3 +1,7 @@
+:: DISCLAIMER
+:: This file is an AI generated version of setup.sh so it may not work
+:: I don't know bash neither do I intend on learning but I'll make a powershell script eventually
+
 @echo off
 setlocal
 
