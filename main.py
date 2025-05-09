@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from googleapiclient.discovery import build
 from datetime import timedelta
 import sys
@@ -8,11 +6,19 @@ import re
 # import json
 
 def main():
+    ids = get_input()
+    if parse_input(ids) != None:
+        id = parse_input(ids)
+        print(get_playlist_data(id))
+
+def get_input():
     if len(sys.argv) >= 2:
         ids=sys.argv[1:]
     else:
         ids=[input("Enter a playlist ID or URL: ")]
+    return ids
 
+def parse_input(ids):
     pattern = re.compile(r"list=([a-zA-Z0-9_-]+)")
 
     for id in ids:
@@ -24,8 +30,7 @@ def main():
             print(match)
             print("Invalid URL\nTry Again!")
             return
-
-        print(get_playlist_data(id))
+    return id
 
 def get_playlist_data(id):
     # API KEY
@@ -78,13 +83,8 @@ def get_playlist_data(id):
     hours, minutes = divmod(minutes, 60)
     
     return f"[{pl_title}] ~ {hours}:{minutes:02d}:{seconds:02d}"
-
-
         # json_data = json.dumps(pl_response, indent=4)
         # print(json_data)
-
-
-
 
 if __name__ == "__main__":
     main()
