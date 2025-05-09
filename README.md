@@ -30,7 +30,7 @@ source yt_timer_env/bin/activate  # Activate the environment (Linux/macOS)
 venv\Scripts\activate  # Activate the environment (Windows)
 ```
 3. Generate a Youtube Data API Key
-If you dont know how to generate a YouTube Data API v3 key, you can visit [this site](https://docs.themeum.com/tutor-lms/tutorials/get-youtube-api-key/https://docs.themeum.com/tutor-lms/tutorials/get-youtube-api-key/)
+If you dont know how to generate a YouTube Data API v3 key, you can visit [this site](https://docs.themeum.com/tutor-lms/tutorials/get-youtube-api-key/https://docs.themeum.com/tutor-lms/tutorials/get-youtube-api-key/) (it's a 2 min read! 🙄)
 
 4. Set the API key as an environment variable
 To set the API key as an environment variable, you can export it (recommended)
