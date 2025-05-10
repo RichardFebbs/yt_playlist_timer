@@ -8,8 +8,8 @@ import re
 def main():
     ids = get_input()
     if parse_input(ids) != None:
-        id = parse_input(ids)
-        print(get_playlist_data(id))
+        ID = parse_input(ids)
+        print(get_playlist_data(ID))
 
 def get_input():
     if len(sys.argv) >= 2:
@@ -21,18 +21,20 @@ def get_input():
 def parse_input(ids):
     pattern = re.compile(r"list=([a-zA-Z0-9_-]+)")
 
-    for id in ids:
-        match=pattern.search(id)
+    for ID in ids:
+        if ID is None:
+            return None
+        match=pattern.search(ID)
 
         if match:
-            id=match.group(1)
+            ID=match.group(1)
         else:
             print(match)
             print("Invalid URL\nTry Again!")
             return
-    return id
+    return ID
 
-def get_playlist_data(id):
+def get_playlist_data(ID):
     # API KEY
     YT_API_KEY = os.getenv("YT_KEY")
     yt = build("youtube", "v3", developerKey=YT_API_KEY)
@@ -44,11 +46,11 @@ def get_playlist_data(id):
     totalSeconds = 0
     nextPageToken = None
     while True:
-        pl_request = yt.playlistItems().list(part="contentDetails", playlistId=id, maxResults=50, pageToken=nextPageToken)
+        pl_request = yt.playlistItems().list(part="contentDetails", playlistId=ID, maxResults=50, pageToken=nextPageToken)
         pl_response = pl_request.execute()
 
         # Different request/response to get the playlist title
-        pl2_req = yt.playlists().list(part="snippet", id=id)
+        pl2_req = yt.playlists().list(part="snippet", id=ID)
         pl2_res = pl2_req.execute()
         pl_title = pl2_res["items"][0]["snippet"]["title"]
 
