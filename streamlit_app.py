@@ -1,5 +1,5 @@
 import streamlit as st
-from main import parse_input, get_playlist_data
+from playlist_utils import parse_input, get_playlist_data
 
 def main():
     if "res" not in st.session_state:
